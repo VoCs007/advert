@@ -1,20 +1,17 @@
 <template>
-  <div id="app">
-    <Pannel/>
-    <Search/> 
+  <div id="App">
+    <PannelComponent/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Pannel from './components/Pannel.vue'
-import Search from './components/search.vue'
+import PannelComponent from './components/Pannel.vue'
 
 export default {
   name: 'App',
   components: {
-    Pannel,
-    Search
+    PannelComponent
   }
 }
 </script>
@@ -24,38 +21,57 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(230, 230, 230);
+  letter-spacing: 0.1em;
 }
-h1,h2 {
+a {
+  text-decoration: none;
+  display: block;
+  user-select: none;
+  cursor: pointer;
+}
+h1, h2, h3, h4 {
   font-family: 'Raleway', sans-serif;
   text-align: center;
   font-weight: 600;
+  letter-spacing: 0.1em;
 }
-input{
-  text-align: center;
-  display: block;
-  margin: 0 auto;
+input[type=text], input[type=password], input[type=email] {
+  letter-spacing: 0.1em;
   border: none;
   font-family: 'Raleway', sans-serif;
-  font-size: 23px;
-  font-weight: 800;
-  align-items: center;
-  width: 100%;
-  height: 50px;
+  font-size: 1.1em;
+  font-weight: 600;
+  height: 48px;
+  border: 3px solid #e1e8ee;
   border-radius: 6px;
-}
+} 
 input:focus, textarea:focus {
   outline: none;
+}
+textarea {
+  letter-spacing: 0.1em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  resize: none;
+  border: 3px solid #e1e8ee;
+  border-radius: 6px;
 }
 p {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  font-size: 30px;
 }
-.shadow {
-  box-shadow: 0 0 10px rgb(121, 120, 120);
+.line {
+  height: 1.5px;
+  width: 100%;
+  background-color: #e1e8ee;
 }
 .mainColor {
   background-color: rgb(200, 190, 216);
+}
+.shadow {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .btn{
   font-family: 'Raleway', sans-serif;
@@ -64,20 +80,22 @@ p {
   text-decoration: none;
   padding-left: 15px;
   padding-right: 15px;
-  font-size: 1.2em;
-  background-color: black;
-  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  color: black;
   border-radius: 2px;
-  margin: 0 20px;
   transition: 1s;
 }
 .btn:active {
-  background-color: #fff;
-  color: black;
+  background-color: black;
+  color: white;
   transition: 0.1s;
 }
+button {
+  font-family: 'Raleway', sans-serif;
+}
 #app {
-  font-family: Roboto, sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
   padding: 0;
 }
