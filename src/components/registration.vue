@@ -5,13 +5,13 @@
       <hr>
     </div>
   <form id="registration" novalidate="true">
-    <div class="registrationForm shadow">
+    <div class="registration-form shadow">
       <Errors v-if="errors.length">
       <li slot="error" v-for="error in errors" :key="error">{{ error }}</li>
       </Errors>
       <div class="name">
         <h4>Name</h4>
-        <div class="nameInput">
+        <div class="name-input">
           <input type="text" placeholder="name" id="name" maxlength="16"
             @keypress="noNumber"
             v-model="user.name"
@@ -19,10 +19,10 @@
         </div>
       </div>
       <div class="email">
-        <div class="mailHeader">
+        <div class="mail-header">
           <h4>@mail</h4>
         </div>
-        <div class="emailInput">
+        <div class="email-input">
           <input type="email" placeholder="@mail" id="email"
           v-model="user.email"
           @keypress="email"
@@ -30,18 +30,18 @@
         </div>
       </div>
       <div class="password">
-        <div class="passwordHeader">
+        <div class="password-header">
           <h4>Create password</h4>
         </div>
-        <div class="passwordInput">
+        <div class="password-input">
           <input type="password" placeholder="password" v-model="user.password" name="password">
         </div>
       </div>
-      <div class="passwordRe">
-        <div class="passwordHeaderRe">
+      <div class="password-re">
+        <div class="password-header-re">
           <h4>Re-enter password</h4>
         </div>
-        <div class="passwordInputRe">
+        <div class="password-input-re">
           <input type="password" placeholder="re-enter password" v-model="user.rePassword" name="rePassword">
         </div>
       </div>
@@ -77,13 +77,13 @@ export default {
     }
   },
   methods: {
-    send: async function(data) {
+    send: function(data) {
       const user = {
         name: data.name,
         email: data.email,
         password: data.password
       }
-      await Auth.createUser(user)
+      Auth.createUser(user)
       .then(() => {
         this.$router.push({name: 'Login'})
       })
@@ -92,11 +92,9 @@ export default {
         this.errors.push('You are registered already')
       })
     },
-    checkForm: function (e) {
+    checkForm: function (evt) {
       this.errors = [];
-      if (!this.user.name) {
-        this.errors.push('Enter name.');
-      } else if(this.user.name.length < 2) {
+      if(this.user.name.length < 2) {
         this.errors.push('Name must contain at least 2 letters')
       }
       if (!this.user.email) {
@@ -116,7 +114,7 @@ export default {
         this.send(this.user)
         return true;
       }
-      e.preventDefault();
+      evt.preventDefault();
     },
     validEmail: function (email) {
       const check = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -162,7 +160,7 @@ h4 {
   width: 101%;
   margin-top: 20px;
 }
-.registrationForm {
+.registration-form {
   margin: 0 auto;
   padding: 20px 30px 20px 20px;
   max-width: 600px;
